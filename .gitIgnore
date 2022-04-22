@@ -1,0 +1,5 @@
+# dependencies
+node_modules
+
+# Config
+backend\config\config.env
