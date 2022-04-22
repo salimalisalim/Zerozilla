@@ -60,8 +60,9 @@ exports.updateClient = asyncHandler(async (req, res) => {
 // Client with Max Bill
 exports.getClientMaxBill = asyncHandler(async (req, res) => {
 
-    await Client.find({}).populate({ path: "agencyId", options: { sort: { totalBill: -1 } } })
+    await Client.find({}).populate({ path: "agencyId" }).sort({ totalBill: -1 }).limit(1)
         .then(data => {
+            console.log(data);
             res.status(200).json({
                 AgencyName: data[0].agencyId.name,
                 ClientName: data[0].name,
